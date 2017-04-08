@@ -14,9 +14,21 @@ class AppServiceProvider extends ServiceProvider
      */
     public function boot()
     {
-        Validator::extend('above', function($attribute, $value, $parameters, $validator) {
+        Validator::extend('required_weight', function($attribute, $value, $parameters, $validator) {
 
-            if(!empty($value) && $value>=$parameterstask){
+            if(!empty($value) && $value >= 65){
+
+                return true;
+
+            }
+
+                return false;
+
+        });
+
+        Validator::extend('required_age', function($attribute, $value, $parameters, $validator) {
+
+            if(!empty($value) && $value >= 16){
 
                 return true;
 

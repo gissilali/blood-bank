@@ -4,37 +4,31 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
+use App\BloodGroup;
+use App\Donor;
 
 class BloodController extends Controller
 {
-	public function showDonationForm(){
-		return view('donation_form');
+	public function showBloodGroupList(){
+
+		$blood_groups = BloodGroup::orderBy('name','desc')->get();
+		return view('blood_group_list', compact('blood_groups'));
+	}
+
+	public function showDonorList($blood_group_id){
+
+		$donors = Donor::where('blood_group_id', $blood_group_id)->orderBy('name', 'desc')->get();
+
+		return view('donor_list', compact('donors'));
+
 	}
 
 	public function makeDonation(Request $request){
-		$messages = [
 
-		'digits_between:65,1000' => 'Weight should be at least 65 KG',
-		
-		];
-		$validator = Validator::make($request->all(), [
-
-			'name' => 'required',
-			'blood_group' => 'required',
-			'email' => 'required|email',
-			'weight' => 'required|integer|digits_between:65,1000',
-			'age' => 'integer|required|digits_between:16,1000'
-
-			], $messages);
-		if($validator->fails()){
-			return back()->withErrors($validator);
-		}
-		else{
-
-
-
-
-		}
-		
 	}
+
+	public function updateDonor(Request $request){
+
+	}
+
 }

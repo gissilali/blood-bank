@@ -20,6 +20,9 @@ Auth::routes();
 Route::get('/home', 'HomeController@index');
 
 Route::group(['middleware' => 'auth'],function(){
-	Route::get('/donation', 'BloodController@showDonationForm');
-	Route::post('/donation', 'BloodController@makeDonation');
+	Route::get('/register-donor', 'DonorController@showRegisterDonorForm');
+	Route::post('/register-donor', 'DonorController@registerDonor');
+	Route::get('/register-donation', 'BloodController@showBloodGroupList');
+	Route::get('/blood-group/{blood_group_id}', 'BloodController@showDonorList');
 });
+

@@ -3,6 +3,16 @@
 	<div class="container">
     <div class="row">
         <div class="col-md-8 col-md-offset-2">
+            @if (Session::has('donor_exists'))
+                <div class="alert alert-danger" role="alert">
+                    <strong>Oh snap!</strong> {{ Session::get('donor_exists') }}
+                </div>
+            @endif
+            @if (Session::has('donor_added'))
+                <div class="alert alert-success" role="alert">
+                    <strong>Great!</strong> {{ Session::get('donor_added') }}
+                </div>
+            @endif
             <div class="panel panel-default">
                 <div class="panel-heading" style="background: crimson;color:white">Blood Donation</div>
                 <div class="panel-body">
@@ -18,6 +28,25 @@
                                 @if ($errors->has('name'))
                                     <span class="help-block">
                                         <strong>{{ $errors->first('name') }}</strong>
+                                    </span>
+                                @endif
+                            </div>
+                        </div>
+
+                        <div class="form-group{{ $errors->has('blood_group') ? ' has-error' : '' }}">
+                            <label for="blood_group" class="col-md-4 control-label">Full blood_group</label>
+
+                            <div class="col-md-6">
+                                <select name="blood_group" id="blood_group" class="form-control">
+                                    <option value="">--Select Blood Group--</option>
+                                    @foreach ($blood_groups as $blood_group)
+                                        <option value="{{ $blood_group->id }}">{{ $blood_group->name." "."(".$blood_group->blood_group.")" }}</option>
+                                    @endforeach
+                                </select>
+
+                                @if ($errors->has('blood_group'))
+                                    <span class="help-block">
+                                        <strong>{{ $errors->first('blood_group') }}</strong>
                                     </span>
                                 @endif
                             </div>
@@ -41,7 +70,7 @@
                             <label for="age" class="col-md-4 control-label">Age</label>
 
                             <div class="col-md-6">
-                                <input id="age" type="text" class="form-control" name="age" required>
+                                <input id="age" type="text" class="form-control" name="age" value="{{ old('age') }}" required>
 
                                 @if ($errors->has('age'))
                                     <span class="help-block">
@@ -55,8 +84,7 @@
                             <label for="weight" class="col-md-4 control-label">Weight</label>
 
                             <div class="col-md-6">
-                                <input id="weight" type="text" class="form-control" name="age" required>
-
+                                <input id="weight" type="text" class="form-control" name="weight" value="{{ old('weight') }}" required>
                                 @if ($errors->has('weight'))
                                     <span class="help-block">
                                         <strong>{{ $errors->first('weight') }}</strong>
@@ -82,7 +110,7 @@
                         <div class="form-group">
                             <div class="col-md-8 col-md-offset-4">
                                 <button type="submit" class="btn btn-primary">
-                                    Record Donation
+                                    Register Donor
                                 </button>
                             </div>
                         </div>
