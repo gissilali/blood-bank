@@ -1,0 +1,36 @@
+/**
+ * Blood Group List Styles
+ */
+.blood-group-list{
+	text-align: center;
+}
+.blood-group-list a{
+	color:crimson;
+	font-weight: bold;
+}
+.blood-group-list li{
+	display: block;
+	text-align:center;
+	background:white;
+	padding:10px;
+	margin-bottom:10px;
+	border:1px solid rgba(0,0,0,0.12);
+}
+/**
+ * Donor Info Panel Styles
+ */
+.donor-info-panel{
+	display: block;
+	background:white;
+	padding:10px;
+	margin-bottom:10px;
+	border:1px solid rgba(0,0,0,0.12);
+}
+
+.donor-info-panel .donor-name{
+	font-size:24px;
+}
+.donor-info-panel .donor-id{
+	font-weight:bold;
+	color:crimson;
+}

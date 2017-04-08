@@ -24,5 +24,6 @@ Route::group(['middleware' => 'auth'],function(){
 	Route::post('/register-donor', 'DonorController@registerDonor');
 	Route::get('/register-donation', 'BloodController@showBloodGroupList');
 	Route::get('/blood-group/{blood_group_id}', 'BloodController@showDonorList');
+	Route::get('/view-donor/{donor_id}', 'BloodController@showDonor');
 });
 

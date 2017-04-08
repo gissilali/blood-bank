@@ -15,7 +15,7 @@
 	            <div class="donor-list" style="margin-top:20px">
 	            	@foreach ($donors as $donor)
 	                <li class="panel panel-body clearfix" style="display: block">
-	                	<a href="{{ url('/blood-group/'.$donor->id) }}" style="float: left">{{ $donor->name }}</a>
+	                	<a href="{{ url('/view-donor/'.$donor->id) }}" style="float: left">{{ $donor->name }}</a>
 	                	<p style="color:crimson;font-weight:bold;float: right;">{{ App\BloodGroup::find($donor->blood_group_id)->name }}</p>
 	            	</li>
 	            	@endforeach

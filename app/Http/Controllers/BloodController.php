@@ -23,6 +23,12 @@ class BloodController extends Controller
 
 	}
 
+	public function showDonor($donor_id){
+
+		$donor = Donor::find($donor_id);
+		return view('view_donor', compact('donor'));
+	}
+
 	public function makeDonation(Request $request){
 
 	}

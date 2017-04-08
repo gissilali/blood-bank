@@ -12,6 +12,7 @@
 
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
+    <link href="{{ asset('css/styles.css') }}" rel="stylesheet">
 
     <!-- Scripts -->
     <script>
@@ -56,6 +57,7 @@
                             <li style="border-bottom:2px solid crimson"><a href="{{ url('register-donor') }}">Register Donor</a></li>
                             <li><a href="{{ url('view-donors') }}">Donors</a></li>
                             <li><a href="{{ url('register-recipients') }}">Register Recipients</a></li>
+                            <li><a href="{{ url('register-donation') }}" class="btn btn-default" style="background: crimson;color:white;font-weight:bold">Add Donation</a></li>
                             <li class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
                                     {{ Auth::user()->name }} <span class="caret"></span>
