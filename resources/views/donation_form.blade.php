@@ -16,7 +16,7 @@
             <div class="panel panel-default">
                 <div class="panel-heading" style="background: crimson;color:white">Blood Donation</div>
                 <div class="panel-body">
-                    <form class="form-horizontal" role="form" method="POST" action="{{ url('donation') }}">
+                    <form class="form-horizontal" role="form" method="POST" action="{{ url('/register-donor') }}">
                         {{ csrf_field() }}
 
                         <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">

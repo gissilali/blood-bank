@@ -13,7 +13,7 @@
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link href="{{ asset('css/styles.css') }}" rel="stylesheet">
-
+    <link rel="stylesheet" href="{{ asset('css/font-awesome-4.7.0/css/font-awesome.css') }}">
     <!-- Scripts -->
     <script>
         window.Laravel = {!! json_encode([
@@ -50,15 +50,14 @@
                     <!-- Right Side Of Navbar -->
                     <ul class="nav navbar-nav navbar-right">
                         <!-- Authentication Links -->
-                        @if (Auth::guest())
-                            <li><a href="{{ route('login') }}">Login</a></li>
+                        @if (!Route::current('admin/login'))
+                            <li><a href="{{ route('login') }}" id="log">Login</a></li>
                             <li><a href="{{ route('register') }}">Register</a></li>
                         @else
-                            <li style="border-bottom:2px solid crimson"><a href="{{ url('register-donor') }}">Register Donor</a></li>
-                            <li><a href="{{ url('view-donors') }}">Donors</a></li>
-                            <li><a href="{{ url('register-recipients') }}">Register Recipients</a></li>
-                            <li><a href="{{ url('register-donation') }}" class="btn btn-default" style="background: crimson;color:white;font-weight:bold">Add Donation</a></li>
-                            <li class="dropdown">
+                            @if (Auth::check())
+                                <li><a href="{{ url('request-blood') }}">Request Blood</a></li>
+                                <li><a href="{{ url('view-donors') }}">Donors</a></li>
+                                <li class="dropdown">
                                 <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
                                     {{ Auth::user()->name }} <span class="caret"></span>
                                 </a>
@@ -75,8 +74,35 @@
                                             {{ csrf_field() }}
                                         </form>
                                     </li>
-                                </ul>
-                            </li>
+                                    </ul>
+                                </li>
+                            @else
+                                @if (Auth::guard('admin')->check())
+                                    <li><a href="{{ url('register-donation') }}" class="btn btn-default" style="background: crimson;color:white;font-weight:bold">Add Donation</a></li>
+                                    <li style="border-bottom:2px solid crimson"><a href="{{ url('register-donor') }}">Register Donor</a></li>
+                                    <li><a href="{{ url('blood-requests') }}">Blood Requests</a></li>
+                                    <li><a href="{{ url('view-donors') }}">Donors</a></li>
+                                    <li class="dropdown">
+                                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">
+                                        {{ Auth::guard('admin')->user()->name }} <span class="caret"></span>
+                                    </a>
+
+                                    <ul class="dropdown-menu" role="menu">
+                                        <li>
+                                            <a href="{{ route('logout') }}"
+                                                onclick="event.preventDefault();
+                                                         document.getElementById('logout-form').submit();">
+                                                Logout
+                                            </a>
+
+                                            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                                {{ csrf_field() }}
+                                            </form>
+                                        </li>
+                                        </ul>
+                                    </li>
+                                @endif
+                            @endif
                         @endif
                     </ul>
                 </div>
@@ -96,6 +122,14 @@
                 });
             });
         });
+    </script>
+    <script>
+        $(document).ready(function(){
+            $('#log').click(function(e){
+                // e.preventDefault();
+                alert("shit!!");
+            });
+        })
     </script>
 </body>
 </html>

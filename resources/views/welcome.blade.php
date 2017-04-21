@@ -41,6 +41,12 @@
                 top: 18px;
             }
 
+            .top-left {
+                position: absolute;
+                left: 10px;
+                top: 18px;
+            }
+
             .content {
                 text-align: center;
             }
@@ -67,6 +73,9 @@
     </head>
     <body>
         <div class="flex-center position-ref full-height">
+                <div class="top-left links">
+                    <a href="{{ url('admin/home') }}">Admin</a>
+                </div>
             @if (Route::has('login'))
                 <div class="top-right links">
                     @if (Auth::check())
@@ -84,11 +93,8 @@
                 </div>
 
                 <div class="links">
-                    <a href="{{ url('/donate') }}">Donate</a>
-                    <a href="{{ url('/recieve') }}">Recieve</a>
-                    <a href="{{ url('/all-reciepts') }}">All Reciepts</a>
-                    <a href="{{ url('/all-donations') }}">All Donations</a>
-                    <a href="{{ url('/stock') }}">Stock</a>
+                    <a href="{{ url('/view-donors') }}">Donors</a>
+                    <a href="{{ url('/stock') }}">Blood Stock</a>
                 </div>
             </div>
         </div>

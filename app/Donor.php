@@ -13,4 +13,10 @@ class Donor extends Model
     	return $this->belongsTo('App\BloodGroup');
     	
     }
+
+    public function donations(){
+
+    	return $this->hasMany('App\Donation');
+    	
+    }
 }

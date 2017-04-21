@@ -34,3 +34,18 @@
 	font-weight:bold;
 	color:crimson;
 }
+.donor-info-panel .actions .register{
+	background:crimson;
+	color:white;
+}
+/**
+ * Donor Listing Style
+ */
+.donor-list .view-donor{
+	display: block;
+	background:crimson;
+	float: left;
+	margin-top:10px;
+	color:white;
+
+}

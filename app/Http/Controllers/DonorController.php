@@ -57,11 +57,26 @@ class DonorController extends Controller
 				])->id;
 
 				$request->session()->flash('donor_added', 'Donor added succesfully Donor Id: '.$donor_id);
-				return redirect('/donation');
+				return redirect('/view-donor/'.$donor_id);
 			}
 			
 		}
 		
+	}
+
+	public function getAllDonors(){
+
+		$donors = Donor::orderBy('name', 'desc')->paginate(20);
+		$blood_groups = BloodGroup::orderBy('name', 'desc')->get();
+		return view('donor_list', compact('donors', 'blood_groups'));
+
+	}
+
+	public function filterDonors($blood_group_id){
+
+		$donors = Donor::where('blood_group_id', $blood_group_id)->orderBy('name', 'desc')->paginate(20);
+		$blood_groups = BloodGroup::orderBy('name', 'desc')->get();
+		return view('donor_list', compact('donors', 'blood_groups'));
 	}
 
 	public function updateDonor(Request $request){

@@ -15,14 +15,14 @@ class BloodGroupsTableSeeder extends Seeder
 
         DB::table('blood_groups')->insert([
 
-        		['blood_group' => 'A+', 'name' => 'A RhD positive'],
-        		['blood_group' => 'A-', 'name' => 'RhD negative'],
-        		['blood_group' => 'B+', 'name' => 'B RhD positive'],
-        		['blood_group' => 'B-', 'name' => 'B RhD negative'],
-        		['blood_group' => 'O+', 'name' => 'O RhD positive'],
-        		['blood_group' => 'O-', 'name' => 'O RhD negative'],
-        		['blood_group' => 'AB+', 'name' => 'AB RhD positive'],
-        		['blood_group' => 'AB-', 'name' => 'AB RhD negative'],
+        		['blood_group' => 'A+', 'name' => 'A RhD positive', 'quantity' => 0, 'donated' => 0, 'dispatched' => 0],
+        		['blood_group' => 'A-', 'name' => 'RhD negative', 'quantity' => 0, 'donated' => 0, 'dispatched' => 0],
+        		['blood_group' => 'B+', 'name' => 'B RhD positive', 'quantity' => 0, 'donated' => 0, 'dispatched' => 0],
+        		['blood_group' => 'B-', 'name' => 'B RhD negative', 'quantity' => 0, 'donated' => 0, 'dispatched' => 0],
+        		['blood_group' => 'O+', 'name' => 'O RhD positive', 'quantity' => 0, 'donated' => 0, 'dispatched' => 0],
+        		['blood_group' => 'O-', 'name' => 'O RhD negative', 'quantity' => 0, 'donated' => 0, 'dispatched' => 0],
+        		['blood_group' => 'AB+', 'name' => 'AB RhD positive', 'quantity' => 0, 'donated' => 0, 'dispatched' => 0],
+        		['blood_group' => 'AB-', 'name' => 'AB RhD negative', 'quantity' => 0, 'donated' => 0, 'dispatched' => 0],
 
         	]);
     }
